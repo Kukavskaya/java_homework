@@ -3,23 +3,20 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class ApplicationManager {
-
- ChromeDriver wd;
-
-  private GroupHelper groupHelper;
+  private WebDriver wd;
 
   public void init() {
     System.setProperty("webdriver.chrome.driver", "lib/chromedriver.exe");
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/birthdays.php#");
-    groupHelper = new GroupHelper(wd);
     login("admin", "secret");
   }
 
@@ -33,6 +30,30 @@ public class ApplicationManager {
 
   public void Logout() {
     wd.findElement(By.linkText("Logout")).click();
+  }
+
+  public void returnToGroupPage() {
+    wd.findElement(By.linkText("group page")).click();
+  }
+
+  public void submitGroupCreation() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  public void fillGroupForm(GroupData groupData) {
+    wd.findElement(By.name("group_name")).click();
+    wd.findElement(By.name("group_name")).clear();
+    wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
+    wd.findElement(By.name("group_header")).click();
+    wd.findElement(By.name("group_header")).clear();
+    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
+    wd.findElement(By.name("group_footer")).click();
+    wd.findElement(By.name("group_footer")).clear();
+    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
+  }
+
+  public void initGroupCreation() {
+    wd.findElement(By.name("new")).click();
   }
 
   public void gotoGroupPage() {
@@ -61,7 +82,11 @@ public class ApplicationManager {
     }
   }
 
-  public GroupHelper getGroupHelper() {
-    return groupHelper;
+  public void deleteSelectedGorups() {
+    wd.findElement(By.name("delete")).click();
+  }
+
+  public void selectGroup() {
+    wd.findElement(By.name("selected[]")).click();
   }
 }
