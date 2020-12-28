@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 import org.openqa.selenium.*;
 
 public class ContactCreationTest {
-  private WebDriver wd;
+  private ChromeDriver wd;
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
