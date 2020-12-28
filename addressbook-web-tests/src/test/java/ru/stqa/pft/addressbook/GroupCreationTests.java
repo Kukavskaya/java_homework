@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,10 +28,15 @@ public class GroupCreationTests {
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 =======
+=======
+>>>>>>> parent of bdc23ca... Замена наследования на делегирование
 
 import org.testng.annotations.*;
 
 public class GroupCreationTests extends TestBase {
+<<<<<<< HEAD
+>>>>>>> parent of bdc23ca... Замена наследования на делегирование
+=======
 >>>>>>> parent of bdc23ca... Замена наследования на делегирование
 
   @Test
@@ -43,6 +49,7 @@ public class GroupCreationTests extends TestBase {
     Logout();
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   private void Logout() {
     wd.findElement(By.linkText("Logout")).click();
@@ -99,6 +106,8 @@ public class GroupCreationTests extends TestBase {
     }
   }
 
+=======
+>>>>>>> parent of bdc23ca... Замена наследования на делегирование
 =======
 >>>>>>> parent of bdc23ca... Замена наследования на делегирование
 }
