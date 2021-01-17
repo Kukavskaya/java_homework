@@ -8,10 +8,11 @@ public class ContactCreationTest extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
+    app.getNavigationHelper().gotoHomePage();
     int before = app.getContactHelper().getContactCount();
     app.getContactHelper().createContact(new ContactData("user1", "user2", "address1", "+79999999999", "testuser@mail.ru", "test1"), true);
     int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(before, before + 1);
+    Assert.assertEquals(after, before + 1);
     app.Logout();
   }
 }
