@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ContactDeletionTest extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testContactDeletion() throws Exception {
     app.getNavigationHelper().gotoHomePage();
     if(! app.getContactHelper().IsThereAContact()) {
