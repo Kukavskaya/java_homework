@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 
 public class GroupDeletionTest extends TestBase{
 
-  @BeforeMethod
+  @BeforeMethod (enabled = false)
   public void ensurePreconditions () {
     app.goTo().GroupPage();
     if (app.group().all().size() == 0) {
@@ -25,7 +25,7 @@ public class GroupDeletionTest extends TestBase{
   }
 
 
-  @Test
+  @Test (enabled = false)
   public void testGroupDeletion() throws Exception {
     Groups before = app.group().all();
     GroupData deletedGroup = before.iterator().next();

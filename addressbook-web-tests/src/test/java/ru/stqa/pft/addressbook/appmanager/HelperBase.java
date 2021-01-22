@@ -2,8 +2,9 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.stqa.pft.addressbook.tests.TestBase;
 
-public class HelperBase {
+public class HelperBase extends TestBase {
   protected WebDriver wd;
 
   public HelperBase(WebDriver wd) {

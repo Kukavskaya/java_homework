@@ -7,9 +7,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.appmanager.ContactHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.assertTrue;
 
 public class ContactHelper extends HelperBase {
   public ContactHelper(WebDriver wd) {
@@ -59,11 +62,27 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
-  public void createContact(ContactData contact, boolean creation) {
+  public void create (ContactData contact, boolean creation) {
     initContactCreation();
     fillContactForm(contact, true);
     submitContactForm();
     returnToHomePage();
+  }
+
+  public void modify(int index, ContactData contact) {
+    selectContacts(index);
+    initContactModification();
+    fillContactForm(contact, false);
+    submitContactModification();
+  }
+
+
+  public void delete(int index) {
+    selectContacts(index);
+    deleteSelectedContacts();
+    app.acceptNextAlert = true;
+    assertTrue(app.closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+    app.goTo().homePage();
   }
 
   public boolean IsThereAContact() {
@@ -74,7 +93,7 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
