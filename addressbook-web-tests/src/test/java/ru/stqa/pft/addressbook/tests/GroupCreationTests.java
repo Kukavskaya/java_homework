@@ -15,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testGroupCreation() {
     app.goTo().GroupPage();
     Groups before = app.group().all();

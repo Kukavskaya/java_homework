@@ -12,7 +12,7 @@ public class TestBase {
   protected static ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
   @BeforeSuite(alwaysRun = true)
-  public void setUp() throws Exception {
+  public void setUp() {
     app.init();
   }
 
