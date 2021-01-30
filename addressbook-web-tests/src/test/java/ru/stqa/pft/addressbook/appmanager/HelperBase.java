@@ -4,6 +4,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.stqa.pft.addressbook.tests.TestBase;
 
+import java.io.File;
+
 public class HelperBase extends TestBase {
   protected WebDriver wd;
 
@@ -26,7 +28,14 @@ public class HelperBase extends TestBase {
     }
   }
 
-   public boolean isAlertPresent () {
+  protected void attach (By locator, File file) {
+    if (file != null) {
+      wd.findElement(locator).sendKeys(file.getAbsolutePath());
+      }
+    }
+
+
+    public boolean isAlertPresent () {
       try {
         wd.switchTo().alert();
         return true;
