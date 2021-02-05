@@ -38,13 +38,13 @@ public class ContactCreationTest extends TestBase {
   @Test (dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) {
     app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     int index = before.size() + 1;
 //    File photo = new File("src/test/resources/image.png");
 //    ContactData contact = new ContactData().withFirstname("user1").withLastname("user2").withAddress("address1")
 //            .withTelephone("+79999999999").withEmail("testuser@mail.ru").withPhoto(photo);
     app.contact().create(contact, true);
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(index));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));

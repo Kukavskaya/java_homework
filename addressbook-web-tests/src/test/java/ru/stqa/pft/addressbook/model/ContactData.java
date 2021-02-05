@@ -66,7 +66,7 @@ public class ContactData {
   private String photo;
 
   public File getPhoto() {
-    return new File(photo);
+    return new File("src/test/resources/image.png");
   }
 
   public ContactData withPhoto(File photo) {
@@ -206,7 +206,7 @@ public class ContactData {
   @Override
   public String toString() {
     return "ContactData{" +
-            "id='" + id + '\'' +
+            "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
             '}';
