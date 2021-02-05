@@ -37,8 +37,8 @@ public class ContactCreationTest extends TestBase {
 
   @Test (dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) {
-    app.goTo().homePage();
     Contacts before = app.db().contacts();
+    app.goTo().homePage();
     int index = before.size() + 1;
 //    File photo = new File("src/test/resources/image.png");
 //    ContactData contact = new ContactData().withFirstname("user1").withLastname("user2").withAddress("address1")
@@ -56,7 +56,7 @@ public class ContactCreationTest extends TestBase {
   public void testBadContactCreation() {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    ContactData contact = new ContactData().withFirstname("user1'").withLastname("user2").withAddress("address1").withTelephone("+79999999999").withEmail("testuser@mail.ru").withGroup("test1");
+    ContactData contact = new ContactData().withFirstname("user1'").withLastname("user2").withAddress("address1").withTelephone("+79999999999").withEmail("testuser@mail.ru");
     app.contact().create(contact, true);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
