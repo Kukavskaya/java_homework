@@ -25,20 +25,24 @@ public class ContactData {
   private  String lastname;
 
   @Expose
-  @Transient
+  @Column(name = "address")
+  @Type(type = "text")
   private  String address;
 
   @Expose
-  @Transient
+  @Column (name = "home")
+  @Type(type = "text")
   private  String telephone;
 
   @Expose
-  @Transient
+  @Column(name = "email")
+  @Type(type = "text")
   private  String email;
 
   @Transient
   private String group;
 
+  @Transient
   @Column (name = "home")
   @Type(type = "text")
   private String homePhone;
@@ -217,11 +221,11 @@ public class ContactData {
     if ( this == o ) return true;
     if ( o == null || getClass() != o.getClass() ) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname);
+    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(address, that.address) && Objects.equals(telephone, that.telephone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstname, lastname);
+    return Objects.hash(id, firstname, lastname, address, telephone);
   }
 }
