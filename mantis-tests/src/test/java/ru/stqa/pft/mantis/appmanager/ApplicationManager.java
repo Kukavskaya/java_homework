@@ -21,6 +21,8 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private DbHelper dbHelper;
+  private PasswordHelper passwordHelper;
 
 
   public ApplicationManager(String browser) {
@@ -45,6 +47,21 @@ public class ApplicationManager {
 
   public String getProperty(String key) {
     return properties.getProperty(key);
+  }
+
+  public PasswordHelper passwordHelper () {
+    return new PasswordHelper(this);
+  }
+
+  public DbHelper db() {
+    return  dbHelper;
+  }
+
+  public PasswordHelper password() {
+    if (passwordHelper == null) {
+      passwordHelper = new PasswordHelper(this);
+    }
+    return passwordHelper;
   }
 
   public RegistrationHelper registration() {
@@ -88,9 +105,10 @@ public class ApplicationManager {
       System.setProperty("webdriver.chrome.driver", "lib/chromedriver.exe");
       System.setProperty("webdriver.firefox.driver", "lib/geckodriver.exe");
 
-      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+      wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
     }
     return wd;
   }
+
 }
