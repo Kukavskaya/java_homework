@@ -1,14 +1,13 @@
 package ru.stqa.pft.addressbook;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 
-public class GroupCreationTests {
+public class GroupCreationTests extends TestBase {
   private WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
@@ -27,17 +26,6 @@ public class GroupCreationTests {
     wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
-=======
-=======
->>>>>>> parent of bdc23ca... Замена наследования на делегирование
-
-import org.testng.annotations.*;
-
-public class GroupCreationTests extends TestBase {
-<<<<<<< HEAD
->>>>>>> parent of bdc23ca... Замена наследования на делегирование
-=======
->>>>>>> parent of bdc23ca... Замена наследования на делегирование
 
   @Test
   public void testGroupCreation() throws Exception {
@@ -49,21 +37,19 @@ public class GroupCreationTests extends TestBase {
     Logout();
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  private void Logout() {
+  public void Logout() {
     wd.findElement(By.linkText("Logout")).click();
   }
 
-  private void returnToGroupPage() {
+  public void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
   }
 
-  private void submitGroupCreation() {
+  public void submitGroupCreation() {
     wd.findElement(By.name("submit")).click();
   }
 
-  private void fillGroupForm(GroupData groupData) {
+  public void fillGroupForm(GroupData groupData) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -75,11 +61,11 @@ public class GroupCreationTests extends TestBase {
     wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
-  private void initGroupCreation() {
+  public void initGroupCreation() {
     wd.findElement(By.name("new")).click();
   }
 
-  private void gotoGroupPage() {
+  public void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
   }
 
@@ -105,9 +91,4 @@ public class GroupCreationTests extends TestBase {
       return false;
     }
   }
-
-=======
->>>>>>> parent of bdc23ca... Замена наследования на делегирование
-=======
->>>>>>> parent of bdc23ca... Замена наследования на делегирование
 }

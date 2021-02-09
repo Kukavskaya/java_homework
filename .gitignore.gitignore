@@ -1,6 +1,6 @@
 .gradle
-sandbox/build/
-
+addressbook-web-tests/build/
+addressbook-web-tests/out/
 # Ignore Gradle GUI config
 gradle-app.setting
 
